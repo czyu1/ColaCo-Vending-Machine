@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
-
+app.use('/build', express.static(path.join('./build')));
 app.get('/', (req, res) => {
   res.sendFile(path.resolve('./src/client/index.html'));
 });
