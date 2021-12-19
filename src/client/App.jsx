@@ -1,14 +1,14 @@
 import React from 'react';
-import UserLogin from './component/user/UserLogin';
-import SignUp from './component/user/SignUp';
+import HomePage from './components/user/UserHomePage.jsx';
 
-function App() {
+const App = function () {
   return (
     <div>
-      <UserLogin />
-      <SignUp />
+      <h1>Login to purchase a drink!</h1>
+
+      <HomePage />
     </div>
   );
-}
+};
 
 export default App;

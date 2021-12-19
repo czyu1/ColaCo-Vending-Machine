@@ -1,33 +1,24 @@
 {
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "moduleDirectory": ["node_modules", "src/"]
-      }
-    },
-    "react": {
-      "version": "detect"
-    }
-  },
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
-  },
-  "extends": ["eslint:recommended", "airbnb", "plugin:react/recommended"],
+  "extends": ["airbnb", "plugin:react/recommended", "prettier"],
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks"],
+  "plugins": ["prettier", "react", "react-hooks","jsx-ally"],
   "rules": {
-    "react/self-closing-comp": "off",
-    "react/jsx-filename-extension": "off",
-    "eslint jsx-quotes": ["error", "prefer-double"],
-    "quotes": [2, "single", { "avoidEscape": true }]
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "quotes": [2, "single", { "avoidEscape": true }],
+    "func-names": "off",
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "no-process-exit": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never"
+      }
+    ]
   }
 }

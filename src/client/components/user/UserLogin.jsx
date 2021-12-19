@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
-function UserLogin() {
+const UserLogin = function ({ onSignUpPage }) {
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
   });
-
+  const submitHandler = () => {
+    console.log('Logged On');
+  };
   return (
     <div>
       <h1>Login</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <div>
           <label htmlFor="username">
             username:
@@ -21,7 +23,7 @@ function UserLogin() {
               value={userInfo.username}
               required
               autoComplete="none"
-            ></input>
+            />
           </label>
         </div>
 
@@ -35,12 +37,19 @@ function UserLogin() {
               }
               required
               autoComplete="none"
-            ></input>
+            />
           </label>
         </div>
+        <input type="submit" value="Login" />
       </form>
+      <div>
+        <span>First time?</span>
+        <button onClick={onSignUpPage} type="button">
+          Sign Up
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default UserLogin;
