@@ -1,9 +1,12 @@
 import React from 'react';
+import UserLogin from './component/user/UserLogin';
+import SignUp from './component/user/SignUp';
 
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <UserLogin />
+      <SignUp />
     </div>
   );
 }

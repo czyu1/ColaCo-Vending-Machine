@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     index: './src/client/index.js',
   },
@@ -27,15 +27,5 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
     ],
-  },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'src/client'),
-    },
-    compress: true,
-    port: 8080,
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
   },
 };
