@@ -28,9 +28,10 @@ userController.createUser = async (req, res) => {
     (error, user) => {
       if (error) {
         console.log(error);
-        return res
-          .status(400)
-          .json({ errorMessage: 'error has occurred during user creation' });
+        return res.status(400).json({
+          errorMessage:
+            'Error has occurred during user creation. Please enter a unique username and try again.',
+        });
       } else {
         const cookies = new Cookies(req, res);
         setCookies(user._id, username, SALT_WORK_FACTOR, cookies);

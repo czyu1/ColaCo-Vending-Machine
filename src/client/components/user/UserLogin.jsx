@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-const UserLogin = function ({ onSignUpPage }) {
-  const [userInfo, setUserInfo] = useState({
-    username: '',
-    password: '',
-    wallet: 0,
-  });
-
-  const { username, password, wallet } = userInfo;
+const UserLogin = function ({
+  onSignUpPage,
+  userInfo,
+  setUserInfo,
+  setIsLoggedOn,
+}) {
+  const { username, password, wallet, admin } = userInfo;
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -26,8 +25,13 @@ const UserLogin = function ({ onSignUpPage }) {
         if (result.errorMessage)
           document.querySelector('#errorDiv').innerHTML = result.errorMessage;
         else {
-          console.log('Logged On');
-          console.log(result, result.username, result.wallet);
+          setUserInfo({
+            ...userInfo,
+            username: result.username,
+            wallet: result.wallet,
+            admin: result.admin,
+          });
+          setIsLoggedOn(true);
         }
       })
       .catch((error) => {
@@ -41,7 +45,7 @@ const UserLogin = function ({ onSignUpPage }) {
       <form onSubmit={submitHandler}>
         <div>
           <label htmlFor="username">
-            username:
+            Username:
             <input
               type="text"
               onChange={(e) =>
@@ -56,7 +60,7 @@ const UserLogin = function ({ onSignUpPage }) {
 
         <div>
           <label htmlFor="password">
-            password:
+            Password:
             <input
               type="password"
               onChange={(e) =>

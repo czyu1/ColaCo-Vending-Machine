@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const SignUp = function ({ previousPage }) {
-  const [userInfo, setUserInfo] = useState({
-    username: '',
-    password: '',
-  });
-
+const SignUp = function ({
+  previousPage,
+  userInfo,
+  setUserInfo,
+  setIsLoggedOn,
+}) {
   const { username, password } = userInfo;
 
   const submitHandler = (e) => {
@@ -25,8 +25,13 @@ const SignUp = function ({ previousPage }) {
         if (result.errorMessage)
           document.querySelector('#errorDiv').innerHTML = result.errorMessage;
         else {
-          console.log('Logged On');
-          console.log(result, result.username, result.wallet);
+          setUserInfo({
+            ...userInfo,
+            username: result.username,
+            wallet: result.wallet,
+            admin: result.admin,
+          });
+          setIsLoggedOn(true);
         }
       })
       .catch((error) => {
@@ -40,7 +45,7 @@ const SignUp = function ({ previousPage }) {
       <form onSubmit={submitHandler}>
         <div>
           <label htmlFor="username">
-            username:
+            Username:
             <input
               type="text"
               onChange={(e) =>
@@ -55,7 +60,7 @@ const SignUp = function ({ previousPage }) {
 
         <div>
           <label htmlFor="password">
-            password:
+            Password:
             <input
               type="password"
               onChange={(e) =>
