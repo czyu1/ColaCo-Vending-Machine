@@ -6,14 +6,37 @@ const SignUp = function ({ previousPage }) {
     password: '',
   });
 
-  const { username, email } = userInfo;
+  const { username, password } = userInfo;
 
-  const submitHandler = () => {
-    console.log('Signed up');
+  const submitHandler = (e) => {
+    e.preventDefault();
+    fetch('/api/signUp', {
+      method: 'POST',
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.errorMessage)
+          document.querySelector('#errorDiv').innerHTML = result.errorMessage;
+        else {
+          console.log('Logged On');
+          console.log(result, result.username, result.wallet);
+        }
+      })
+      .catch((error) => {
+        document.querySelector('#errorDiv').innerHTML = error;
+      });
   };
   return (
     <div>
       <h1>Sign Up</h1>
+      <div id="errorDiv" name="Log-in Errors"></div>
       <form onSubmit={submitHandler}>
         <div>
           <label htmlFor="username">
@@ -46,8 +69,9 @@ const SignUp = function ({ previousPage }) {
         <input type="submit" value="SignUp" />
       </form>
       <div>
-        <span>Back</span>
-        <button onClick={previousPage} type="button"></button>
+        <button onClick={previousPage} type="button">
+          Back
+        </button>
       </div>
     </div>
   );

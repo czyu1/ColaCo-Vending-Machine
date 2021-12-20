@@ -12,8 +12,8 @@ const HomePage = function () {
     setCurrentPage('signUp');
   };
 
-  const renderPage = (currentPage) => {
-    switch (currentPage) {
+  const renderPage = (page) => {
+    switch (page) {
       case 'signUp':
         return <SignUp previousPage={previousPage} />;
       default:
@@ -21,7 +21,7 @@ const HomePage = function () {
     }
   };
 
-  return <div>{renderPage}</div>;
+  return <div>{renderPage(currentPage)}</div>;
 };
 
 export default HomePage;

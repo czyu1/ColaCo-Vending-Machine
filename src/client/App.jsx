@@ -5,7 +5,6 @@ const App = function () {
   return (
     <div>
       <h1>Login to purchase a drink!</h1>
-
       <HomePage />
     </div>
   );

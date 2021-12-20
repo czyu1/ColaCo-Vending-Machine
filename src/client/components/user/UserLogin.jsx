@@ -4,13 +4,40 @@ const UserLogin = function ({ onSignUpPage }) {
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
+    wallet: 0,
   });
-  const submitHandler = () => {
-    console.log('Logged On');
+
+  const { username, password, wallet } = userInfo;
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    fetch('/api/userLogin', {
+      method: 'POST',
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.errorMessage)
+          document.querySelector('#errorDiv').innerHTML = result.errorMessage;
+        else {
+          console.log('Logged On');
+          console.log(result, result.username, result.wallet);
+        }
+      })
+      .catch((error) => {
+        document.querySelector('#errorDiv').innerHTML = error;
+      });
   };
   return (
     <div>
       <h1>Login</h1>
+      <div id="errorDiv" name="Log-in Errors"></div>
       <form onSubmit={submitHandler}>
         <div>
           <label htmlFor="username">
