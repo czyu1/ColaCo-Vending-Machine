@@ -4,8 +4,8 @@ const Welcome = ({ userInfo }) => {
   const { username, wallet } = userInfo;
   return (
     <div>
-      <div>Welcome {username}!</div>
-      <div>Wallet: ${wallet}</div>
+      <h1>Welcome {username}!</h1>
+      <h1>Wallet: ${wallet}</h1>
     </div>
   );
 };

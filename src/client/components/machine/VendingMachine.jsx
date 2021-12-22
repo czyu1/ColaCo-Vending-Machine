@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductSlot from './ProductSlot.jsx';
 
-const VendingMachine = ({ username, wallet, admin }) => {
-  
-
+const VendingMachine = ({ userInfo }) => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
