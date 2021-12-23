@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const SignUp = function ({
   previousPage,
@@ -40,6 +40,7 @@ const SignUp = function ({
   };
   return (
     <div>
+      <h1>Login to purchase a drink!</h1>
       <h1>Sign Up</h1>
       <div id="errorDiv" name="Log-in Errors"></div>
       <form onSubmit={submitHandler}>

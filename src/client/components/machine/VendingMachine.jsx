@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ProductSlot from './ProductSlot.jsx';
 
-const VendingMachine = ({ userInfo }) => {
+const VendingMachine = ({ userInfo, setUserInfo }) => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
     fetch('/api/getProducts')
       .then((response) => response.json())
       .then((products) => setProducts(products));
-  }, []);
+  }, [products]);
 
   return (
     <div>
@@ -16,7 +16,14 @@ const VendingMachine = ({ userInfo }) => {
       <div style={productDisplayStyle}>
         {products &&
           products.map((product) => {
-            return <ProductSlot key={product._id} product={product} />;
+            return (
+              <ProductSlot
+                key={product._id}
+                product={product}
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
+              />
+            );
           })}
       </div>
     </div>

@@ -48,11 +48,9 @@ const HomePage = function () {
 
   return (
     <div>
-      <h1>Login to purchase a drink!</h1>
       {!isLoggedOn && renderPage(currentPage)}
-      {isLoggedOn && <Welcome userInfo={userInfo} />}
-      {userInfo.admin && <div>ADMIN PAGE</div>}
-      <VendingMachine userInfo={userInfo} />
+      {isLoggedOn && <Welcome userInfo={userInfo} setUserInfo={setUserInfo} />}
+      <VendingMachine userInfo={userInfo} setUserInfo={setUserInfo} />
     </div>
   );
 };
