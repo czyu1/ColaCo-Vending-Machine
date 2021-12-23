@@ -1,14 +1,14 @@
 # ColaCo-Vending-Machine
 
-#Component Tree
+# Component Tree
 App
 |-Homepage
-|-UserLogin?: |-SignUp?: |-Welcome (Conditional rendering depending on whether the user is logged on or clicked on the sign up/back button)
-|-VendingMachine
-|-ProductSlot  
+  |-UserLogin?: |-SignUp?: |-Welcome (Conditional rendering depending on whether the user is logged on or clicked on the sign up/back button)
+    |-VendingMachine
+    |-ProductSlot  
+      |-AdminPower
 
-
-#SET UP
+# SET UP
 1. npm install
 2. npm run build
 3. npm start
