@@ -13,7 +13,7 @@
 1. npm install
 2. npm run build
 3. npm start
-4. add .env file to the root directory with `MONGODB_URI = mongodb+srv://admin:Password123@cluster0.yeebw.mongodb.net/colaco?retryWrites=true&w=majority`
+4. add .env file to the root directory and copy and paste the following `MONGODB_URI = mongodb+srv://admin:Password123@cluster0.yeebw.mongodb.net/colaco?retryWrites=true&w=majority` for access to MongoDB. 
 5. go to your browser on http://localhost:3000/
 
 # Admin Access
