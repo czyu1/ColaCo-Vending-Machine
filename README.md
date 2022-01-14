@@ -10,6 +10,7 @@
             |-AdminPower  <br />
 </pre>
 # SET UP
+0. You will need Node 15 
 1. npm install
 2. npm run build
 3. npm start
